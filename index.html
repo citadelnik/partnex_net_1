@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partnex.net | The Operating System for Strategic Commerce</title>
+    <meta name="description" content="Partnex.net is the ecosystem where verified resilience becomes your ultimate commercial advantage.">
+    <meta name="keywords" content="Partnex, strategic commerce, supply chain, resilience, sovereignty stack, CSRD, CSDDD, ESG, B2B, verification, due diligence">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0F1F;
+            color: #E0E0E0;
+            overflow-x: hidden;
+        }
+        .font-headline {
+            font-family: 'Manrope', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #FBBF24, #F59E0B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1), inset 0 -2px 0 rgba(0,0,0,0.2);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(251, 191, 36, 0.15), inset 0 -1px 0 rgba(0,0,0,0.1);
+        }
+        .ui-mockup {
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .ui-mockup-inner {
+            background-color: #0F172A;
+            border: 1px solid #1E293B;
+        }
+        .modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000), transform 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Styles for the new demo section */
+        #demo-visuals > .demo-pane {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        #demo-visuals > .demo-pane.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .demo-step {
+            transition: opacity 0.3s ease;
+            opacity: 0.4;
+        }
+        .demo-step.is-active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-900/50 backdrop-blur-lg border-b border-slate-700/50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold font-headline text-white">Partnex<span class="gradient-text">.net</span></a>
+            <button id="request-invite-header" class="cta-button bg-amber-500 text-slate-900 font-bold py-2 px-6 rounded-lg text-sm">
+                Apply to Join
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="pt-32 pb-24 text-center bg-slate-900">
+            <div class="container mx-auto px-6 fade-in-up">
+                <h1 class="text-5xl md:text-7xl font-extrabold font-headline text-white leading-tight">
+                    Your business is <span class="gradient-text">too good</span> to be ignored
+                </h1>
+                <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-slate-300">
+                    The rules of the big league have changed. Major corporations aren't just looking for suppliers; they're seeking resilient partners. We'll prove you're exactly who they need.
+                </p>
+                <button id="request-invite-hero" class="cta-button mt-12 bg-amber-500 text-slate-900 font-bold py-4 px-10 rounded-lg text-lg">
+                    Start & Get Your Free Analysis
+                </button>
+            </div>
+        </section>
+
+        <section id="shift" class="py-24">
+            <div class="container mx-auto px-6 text-center">
+                <div class="fade-in-up">
+                    <h2 class="text-4xl md:text-5xl font-bold font-headline text-white">What's actually happening? A simple explanation.</h2>
+                    <p class="mt-6 max-w-3xl mx-auto text-lg text-slate-400">Imagine your biggest clients now have to take an exam. Part of that exam is reporting on all their partners. That means you. They can no longer just say, "We work with a great company." They need to show documents, certificates, data. Your reliability has become part of their reputation. We'll help you ace that exam.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="free-value" class="py-24 bg-slate-900">
+            <div class="container mx-auto px-6 fade-in-up">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold font-headline text-white">What happens <span class="gradient-text">the moment you apply?</span></h2>
+                    <p class="mt-6 max-w-3xl mx-auto text-lg text-slate-400">No long waits. No generic pitches. You get immediate, tangible value. For free.</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="ui-mockup">
+                        <p class="font-bold text-white mb-4">Your Personal Readiness Report</p>
+                        <div class="ui-mockup-inner p-4 rounded-lg">
+                            <h4 class="font-semibold text-white">Analysis for: Stark Industries</h4>
+                            <p class="text-sm text-slate-400 mt-1">Sector: Advanced Manufacturing</p>
+                            <div class="mt-4 pt-4 border-t border-slate-700">
+                                <h5 class="font-semibold text-amber-400">Key Opportunities:</h5>
+                                <ul class="mt-2 space-y-2 text-sm text-slate-300">
+                                    <li class="flex"><span class="text-green-400 mr-2">▲</span>High demand in Defense & Aerospace sector.</li>
+                                    <li class="flex"><span class="text-green-400 mr-2">▲</span>Potential for contracts in Energy Sovereignty.</li>
+                                </ul>
+                            </div>
+                             <div class="mt-4 pt-4 border-t border-slate-700">
+                                <h5 class="font-semibold text-yellow-400">Growth Areas:</h5>
+                                <ul class="mt-2 space-y-2 text-sm text-slate-300">
+                                    <li class="flex"><span class="text-red-400 mr-2">!</span>ISO 27001 verification needed to access defense contracts.</li>
+                                    <li class="flex"><span class="text-red-400 mr-2">!</span>Requires automated ESG data collection for CSRD reporting.</li>
+                                </ul>
+                            </div>
+                        </div>
+                         <button class="mt-4 w-full bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold py-3 px-4 rounded-md transition-colors">Download Full Report (PDF)</button>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold text-white mt-2">1. You apply.</h3>
+                        <p class="mt-2 text-slate-400">It takes 2 minutes. No commitments.</p>
+                        <h3 class="text-3xl font-bold text-white mt-6">2. You get a link to a questionnaire.</h3>
+                        <p class="mt-2 text-slate-400">5-7 simple questions about your business, sector, and current certifications.</p>
+                        <h3 class="text-3xl font-bold text-white mt-6">3. We instantly generate your <span class="gradient-text">Personal Readiness Report.</span></h3>
+                        <p class="mt-2 text-slate-400">This isn't a sales brochure. It's a valuable strategic document that shows you:</p>
+                        <ul class="mt-4 space-y-2 text-slate-300">
+                            <li class="flex items-center"><span class="w-2 h-2 rounded-full bg-amber-400 mr-3"></span>Your hidden strengths in the new economy.</li>
+                            <li class="flex items-center"><span class="w-2 h-2 rounded-full bg-amber-400 mr-3"></span>The specific steps that will unlock the most lucrative contracts.</li>
+                            <li class="flex items-center"><span class="w-2 h-2 rounded-full bg-amber-400 mr-3"></span>Exactly how Partnex.net will help you at every stage.</li>
+                        </ul>
+                        <p class="mt-4 font-semibold text-white">This is how we prove our expertise and build trust—by giving you real value from the very first minute.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo" class="py-24 bg-slate-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="text-4xl md:text-5xl font-bold font-headline text-white">How we turn your potential into <span class="gradient-text">contracts</span></h2>
+                    <p class="mt-6 max-w-3xl mx-auto text-lg text-slate-400">Our platform is an end-to-end system for strategic commerce. We guide you through every stage, transforming your operational data into your most powerful asset.</p>
+                </div>
+
+                <div id="demo-wrapper" class="grid lg:grid-cols-2 lg:gap-16">
+                    <div id="demo-steps" class="lg:pt-8">
+                        <div data-step="1" class="demo-step mb-24">
+                            <span class="font-bold gradient-text">STEP 1</span>
+                            <h3 class="text-3xl font-bold text-white mt-2">Onboard & Digitize</h3>
+                            <p class="mt-4 text-slate-400">We start by creating your company's digital twin. You connect data sources and upload documents. Our system intelligently structures this information, forming the foundation of your Resilience Profile.</p>
+                        </div>
+                        <div data-step="2" class="demo-step mb-24">
+                            <span class="font-bold gradient-text">STEP 2</span>
+                            <h3 class="text-3xl font-bold text-white mt-2">Verify & Enhance</h3>
+                            <p class="mt-4 text-slate-400">This is where data becomes trust. We automate the verification of your credentials (KYB, ISO, ESG reports) against trusted registries, creating a tamper-proof "Resilience Passport" that primes you for due diligence.</p>
+                        </div>
+                         <div data-step="3" class="demo-step mb-24">
+                            <span class="font-bold gradient-text">STEP 3</span>
+                            <h3 class="text-3xl font-bold text-white mt-2">Discover & Match</h3>
+                            <p class="mt-4 text-slate-400">Our AI Curator continuously scans the market for buyers whose requirements are a perfect match for your verified profile. No more cold calls—we bring pre-qualified, high-value opportunities directly to you.</p>
+                        </div>
+                        <div data-step="4" class="demo-step">
+                            <span class="font-bold gradient-text">STEP 4</span>
+                            <h3 class="text-3xl font-bold text-white mt-2">Transact & Scale</h3>
+                            <p class="mt-4 text-slate-400">From secure communication and smart contracts to escrow payments and integrated logistics, the entire deal lifecycle is managed within Partnex. It’s a transparent, efficient, and secure command center for your growth.</p>
+                        </div>
+                    </div>
+
+                    <div class="hidden lg:block lg:sticky top-24 h-max">
+                        <div id="demo-visuals" class="ui-mockup">
+                            <div id="pane-1" class="demo-pane">
+                                <div class="flex justify-between items-center mb-4">
+                                    <p class="font-bold text-white">Data Onboarding</p>
+                                    <span class="text-xs font-mono bg-slate-700 text-slate-300 px-2 py-1 rounded">PROFILE: 25%</span>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="ui-mockup-inner p-3 rounded-lg"><h4 class="font-semibold text-white text-sm">Corporate Documents</h4><p class="text-xs text-slate-400">Registry Extracts, UBO... <span class="text-green-400 float-right">✔ Synced</span></p></div>
+                                    <div class="ui-mockup-inner p-3 rounded-lg"><h4 class="font-semibold text-white text-sm">Certifications</h4><p class="text-xs text-slate-400">ISO 9001, ISO 27001... <span class="text-yellow-400 float-right">● Pending</span></p></div>
+                                    <div class="ui-mockup-inner p-3 rounded-lg"><h4 class="font-semibold text-white text-sm">Financial Statements</h4><p class="text-xs text-slate-400">Past 3 years... <span class="text-green-400 float-right">✔ Synced</span></p></div>
+                                    <div class="ui-mockup-inner p-3 rounded-lg"><h4 class="font-semibold text-white text-sm">ESG Data Sources</h4><p class="text-xs text-slate-400">Utility bills, HR system... <span class="text-red-400 float-right">✖ Not Connected</span></p></div>
+                                </div>
+                                <button class="mt-4 w-full bg-slate-600 text-white font-bold py-2 px-4 rounded-md">Connect Data Source</button>
+                            </div>
+                            <div id="pane-2" class="demo-pane">
+                                <div class="flex justify-between items-center mb-4">
+                                    <p class="font-bold text-white">Resilience Passport</p>
+                                    <span class="text-xs font-mono bg-green-900/50 text-green-300 px-2 py-1 rounded border border-green-500/50">VERIFIED</span>
+                                </div>
+                                <div class="grid grid-cols-3 gap-3 text-center">
+                                    <div class="ui-mockup-inner p-3 rounded-lg"><h4 class="font-semibold text-white text-sm">KYB/AML</h4><p class="text-2xl mt-1">✅</p><p class="text-xs text-slate-400">Verified</p></div>
+                                    <div class="ui-mockup-inner p-3 rounded-lg"><h4 class="font-semibold text-white text-sm">Security</h4><p class="text-2xl mt-1">✅</p><p class="text-xs text-slate-400">ISO 27001</p></div>
+                                    <div class="ui-mockup-inner p-3 rounded-lg"><h4 class="font-semibold text-white text-sm">ESG</h4><p class="text-2xl mt-1">⚠️</p><p class="text-xs text-slate-400">CSRD Ready</p></div>
+                                </div>
+                                <div class="mt-4 ui-mockup-inner p-3 rounded-lg">
+                                    <h4 class="font-semibold text-white text-sm mb-2">Resilience Score</h4>
+                                    <div class="w-full bg-slate-700 rounded-full h-2.5"><div class="bg-amber-500 h-2.5 rounded-full" style="width: 82%"></div></div>
+                                    <p class="text-xs text-slate-400 mt-1">Your profile is stronger than 82% of peers in your sector.</p>
+                                </div>
+                            </div>
+                            <div id="pane-3" class="demo-pane">
+                                <p class="font-bold text-white mb-4">AI Opportunity Curator</p>
+                                <div class="border-2 border-amber-400 p-4 rounded-lg bg-amber-900/20">
+                                    <h4 class="font-semibold text-white">High-Confidence Match Found</h4>
+                                    <div class="flex items-center mt-2">
+                                        <img src="https://via.placeholder.com/40" alt="Buyer logo" class="rounded-full mr-3">
+                                        <div>
+                                            <p class="text-sm font-bold text-white">European Defense Agency</p>
+                                            <p class="text-xs text-slate-300">Req: Secure Communications Component</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3 pt-3 border-t border-amber-500/30">
+                                        <p class="text-xs text-slate-300">Match Score: <span class="font-bold text-lg text-amber-300">98%</span></p>
+                                        <p class="text-xs text-green-400 mt-1">✔ ISO 27001  ✔ EU Origin  ✔ CSRD Compliant</p>
+                                    </div>
+                                </div>
+                                <div class="ui-mockup-inner p-3 rounded-lg mt-3">
+                                    <p class="text-sm text-slate-300">Also matching: <span class="font-semibold text-white">Siemens Energy</span> (85%), <span class="font-semibold text-white">Northvolt</span> (79%)</p>
+                                </div>
+                            </div>
+                            <div id="pane-4" class="demo-pane">
+                               <p class="font-bold text-white mb-4">Deal Dashboard: #EUDA-SI-001</p>
+                               <div class="space-y-3">
+                                    <div class="ui-mockup-inner p-3 rounded-lg">
+                                        <h4 class="font-semibold text-white text-sm">Deal Status: <span class="text-green-400">Escrow Funded</span></h4>
+                                        <div class="w-full bg-slate-700 rounded-full h-2.5 mt-2"><div class="bg-green-500 h-2.5 rounded-full" style="width: 75%"></div></div>
+                                    </div>
+                                    <div class="grid grid-cols-3 gap-2 text-center">
+                                        <div class="ui-mockup-inner p-2 rounded-lg"><p class="text-xs text-slate-400">Contract</p><p class="text-white font-bold">$500k</p></div>
+                                        <div class="ui-mockup-inner p-2 rounded-lg"><p class="text-xs text-slate-400">Insurance</p><p class="text-white font-bold">Active</p></div>
+                                        <div class="ui-mockup-inner p-2 rounded-lg"><p class="text-xs text-slate-400">Logistics</p><p class="text-white font-bold">Pending</p></div>
+                                    </div>
+                                    <div class="ui-mockup-inner p-3 rounded-lg">
+                                        <h4 class="font-semibold text-white text-sm">Secure Chat</h4>
+                                        <p class="text-xs text-slate-400 mt-2 p-2 bg-slate-900 rounded-md">All compliance documents verified by Partnex. You are cleared for shipment.</p>
+                                    </div>
+                               </div>
+                               <button class="mt-4 w-full bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold py-3 px-4 rounded-md transition-colors">Manage Full Transaction</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="final-cta" class="py-24 bg-slate-900">
+            <div class="container mx-auto px-6 text-center fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold font-headline text-white">Stop being overlooked. <br><span class="gradient-text">It's time to be chosen.</span></h2>
+                <p class="mt-6 max-w-2xl mx-auto text-lg text-slate-300">
+                    You've built an outstanding product. We'll help the world see why it's also the most reliable. Apply, get your free analysis, and take your first step into the major leagues.
+                </p>
+                <button id="request-invite-final" class="cta-button mt-12 bg-amber-500 text-slate-900 font-bold py-4 px-10 rounded-lg text-lg">
+                    Start & Get Your Free Analysis
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-slate-700/50">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-400">
+            <p>&copy; 2025 Partnex.net. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="modal" class="modal invisible opacity-0 fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
+        <div id="modal-content" class="bg-slate-800 p-8 rounded-2xl shadow-2xl w-full max-w-md m-4 transform scale-95 transition-transform duration-300">
+            <div class="flex justify-between items-center">
+                <h3 class="text-2xl font-bold text-white">Apply to Join</h3>
+                <button id="close-modal" class="text-slate-400 hover:text-white text-3xl">&times;</button>
+            </div>
+            <p class="mt-2 text-slate-400">Leave your details to receive the questionnaire link for your free Readiness Report.</p>
+            <form id="invite-form" class="mt-6 space-y-4">
+                <div><label for="name" class="block text-sm font-medium text-slate-300">Your Name</label><input type="text" id="name" name="name" required class="mt-1 block w-full bg-slate-700 border border-slate-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-amber-500 focus:border-amber-500"></div>
+                <div><label for="email" class="block text-sm font-medium text-slate-300">Email</label><input type="email" id="email" name="email" required class="mt-1 block w-full bg-slate-700 border border-slate-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-amber-500 focus:border-amber-500"></div>
+                <div><label for="company" class="block text-sm font-medium text-slate-300">Company Name</label><input type="text" id="company" name="company" required class="mt-1 block w-full bg-slate-700 border border-slate-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-amber-500 focus:border-amber-500"></div>
+                <div class="pt-4"><button type="submit" class="w-full cta-button bg-amber-500 text-slate-900 font-bold py-3 px-4 rounded-lg">Get My Free Analysis</button></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Modal logic (remains the same)
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById('modal-content');
+            const closeModalBtn = document.getElementById('close-modal');
+            const openModalBtns = [
+                document.getElementById('request-invite-header'),
+                document.getElementById('request-invite-hero'),
+                document.getElementById('request-invite-final')
+            ];
+
+            const openModal = () => {
+                modal.classList.remove('invisible', 'opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            };
+
+            const closeModal = () => {
+                modalContent.classList.add('scale-95');
+                modalContent.classList.remove('scale-100');
+                modal.classList.add('invisible', 'opacity-0');
+            };
+
+            openModalBtns.forEach(btn => btn.addEventListener('click', openModal));
+            closeModalBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
+            document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeModal(); });
+            
+            const inviteForm = document.getElementById('invite-form');
+            inviteForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                alert(`Thank you, ${name}! The questionnaire link for your Personal Readiness Report has been sent to your email.`);
+                inviteForm.reset();
+                closeModal();
+            });
+
+            // Fade-in on scroll animation (remains the same)
+            const animatedElements = document.querySelectorAll('.fade-in-up');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            animatedElements.forEach(el => observer.observe(el));
+
+            // === NEW SCROLLYTELLING LOGIC ===
+            const demoSteps = document.querySelectorAll('.demo-step');
+            const demoPanes = document.querySelectorAll('.demo-pane');
+
+            // Set the first step as active by default
+            if (demoSteps.length > 0) {
+                demoSteps[0].classList.add('is-active');
+                demoPanes[0].classList.add('active');
+            }
+
+            const scrollyObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const step = entry.target.dataset.step;
+
+                        // Highlight the active text step
+                        demoSteps.forEach(s => s.classList.remove('is-active'));
+                        entry.target.classList.add('is-active');
+
+                        // Show the corresponding visual pane
+                        demoPanes.forEach(pane => {
+                            pane.classList.remove('active');
+                            if (pane.id === `pane-${step}`) {
+                                pane.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { 
+                rootMargin: '-40% 0px -40% 0px', // Trigger when step is in the middle 40% of the viewport
+                threshold: 0 
+            });
+
+            demoSteps.forEach(step => {
+                scrollyObserver.observe(step);
+            });
+        });
+    </script>
+</body>
+</html>
