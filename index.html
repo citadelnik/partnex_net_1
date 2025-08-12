@@ -441,8 +441,158 @@
         }
         .metric-card .value.green { color: var(--success-green); }
         .metric-card .value.red { color: var(--danger-red); }
+
+        /* Block 5: Qualification Check */
+        .qualification-check {
+            background-color: var(--bg-dark);
+        }
+        .qualification-content {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+        .qualification-visual {
+            flex: 1.2;
+        }
+        .credentials-mockup {
+            background: var(--bg-light);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+        }
+        .credentials-mockup h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .credential-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--bg-dark);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 15px;
+        }
+        .credential-item .icon {
+            font-size: 24px;
+            color: var(--accent-blue);
+        }
+        .credential-item .info .title {
+            color: var(--text-headings);
+            font-weight: 600;
+        }
+        .credential-item .info .issuer {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .credential-item .status {
+            margin-left: auto;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 20px;
+            background-color: rgba(63, 185, 80, 0.1);
+            color: var(--success-green);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .qualification-text {
+            flex: 1;
+        }
         
-        /* Block 5: Features */
+        /* NEW BLOCK: Collaboration Flow */
+        .collaboration-flow {
+            background-color: var(--bg-light);
+        }
+        .collaboration-content {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            margin-top: 60px;
+        }
+        .collaboration-text {
+            flex: 1;
+        }
+        .collaboration-visual {
+            flex: 1.2;
+        }
+        .chat-mockup {
+            background: var(--bg-dark);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+        .chat-header {
+            padding: 15px 20px;
+            background: var(--bg-dark);
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-headings);
+            font-weight: 600;
+        }
+        .chat-body {
+            padding: 20px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .message {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            max-width: 80%;
+        }
+        .message .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .message .bubble {
+            background-color: var(--bg-light);
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 15px;
+            line-height: 1.5;
+            color: var(--text-primary);
+        }
+        .message.client {
+            align-self: flex-start;
+        }
+        .message.expert {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+        .message.expert .bubble {
+            background-color: var(--accent-blue);
+            color: var(--text-headings);
+        }
+        .message.attachment {
+            align-self: center;
+            background: var(--bg-light);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+        .message.system {
+            align-self: center;
+            margin-top: auto;
+            padding-top: 15px;
+        }
+
+        /* Block 6: Features */
         .features {
             background-color: var(--bg-dark);
         }
@@ -472,9 +622,9 @@
             margin-bottom: 0;
         }
 
-        /* Block 6: Pricing Section */
+        /* Block 7: Pricing Section */
         .pricing {
-            background-color: var(--bg-dark);
+            background-color: var(--bg-light);
         }
         .pricing-grid {
             display: grid;
@@ -483,7 +633,7 @@
             margin-top: 60px;
         }
         .pricing-card {
-            background-color: var(--bg-light);
+            background-color: var(--bg-dark);
             padding: 40px;
             border-radius: 12px;
             border: 1px solid var(--border-color);
@@ -511,7 +661,7 @@
             text-transform: uppercase;
         }
 
-        /* Block 7: Comparison */
+        /* Block 8: Comparison */
         .comparison-table-wrapper {
             overflow-x: auto;
         }
@@ -561,7 +711,7 @@
             font-weight: bold;
         }
 
-        /* Block 8: CTA and Testimonials */
+        /* Block 9: CTA and Testimonials */
         .testimonials {
             background-color: var(--bg-light);
         }
@@ -613,7 +763,7 @@
             color: var(--text-secondary);
         }
         
-        /* Block 9: Dual CTA */
+        /* Block 10: Dual CTA */
         .dual-cta-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -652,45 +802,27 @@
         @media (max-width: 992px) {
             h1 { font-size: 44px; }
             h2 { font-size: 36px; }
-            .hero-content, .trust-engine-content {
+            .hero-content, .trust-engine-content, .qualification-content, .collaboration-content {
                 flex-direction: column;
                 text-align: center;
             }
-            .hero-text {
-                order: 2;
-            }
-            .hero-visual {
-                order: 1;
-                margin-bottom: 40px;
-            }
-            .hero-cta-buttons {
-                justify-content: center;
-            }
-            .social-proof p {
-                text-align: center;
-            }
-            .logos {
-                justify-content: center;
-            }
-            .trust-engine-content {
-                gap: 40px;
-            }
-            .trust-engine-features {
-                order: 2;
-            }
-            .trust-engine-visual {
-                order: 1;
-            }
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-            .ai-matching-grid {
-                grid-template-columns: 1fr;
-            }
-            .ai-core {
-                transform: rotate(90deg);
-                margin: 20px 0;
-            }
+            .hero-text { order: 2; }
+            .hero-visual { order: 1; margin-bottom: 40px; }
+            .hero-cta-buttons { justify-content: center; }
+            .social-proof p { text-align: center; }
+            .logos { justify-content: center; }
+            .trust-engine-content { gap: 40px; }
+            .trust-engine-features { order: 2; }
+            .trust-engine-visual { order: 1; }
+            .qualification-content { gap: 40px; }
+            .qualification-text { order: 2; }
+            .qualification-visual { order: 1; }
+            .collaboration-content { gap: 40px; }
+            .collaboration-text { order: 2; }
+            .collaboration-visual { order: 1; width: 100%; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .ai-matching-grid { grid-template-columns: 1fr; }
+            .ai-core { transform: rotate(90deg); margin: 20px 0; }
         }
 
         @media (max-width: 768px) {
@@ -923,6 +1055,138 @@
         </div>
     </section>
 
+    <!-- QUALIFICATION CHECK SECTION -->
+    <section class="qualification-check">
+        <div class="container">
+            <h2>Beyond Reviews: Verifiable Expertise</h2>
+            <p class="section-subtitle">We go beyond subjective ratings. Our team manually verifies the key qualifications of every expert, so you hire based on proven credentials, not just claims.</p>
+            <div class="qualification-content">
+                <div class="qualification-visual">
+                    <div class="credentials-mockup">
+                        <h3>Verified Credentials</h3>
+                        <div class="credential-item">
+                            <div class="icon">🎓</div>
+                            <div class="info">
+                                <div class="title">M.Sc. Computer Science</div>
+                                <div class="issuer">Technical University of Munich</div>
+                            </div>
+                            <div class="status">✓ Verified</div>
+                        </div>
+                        <div class="credential-item">
+                            <div class="icon">📜</div>
+                            <div class="info">
+                                <div class="title">Azure Solutions Architect Expert</div>
+                                <div class="issuer">Microsoft, ID: MS-583920</div>
+                            </div>
+                            <div class="status">✓ Verified</div>
+                        </div>
+                        <div class="credential-item">
+                            <div class="icon">💡</div>
+                            <div class="info">
+                                <div class="title">Patent: EP3105990B1</div>
+                                <div class="issuer">Secure Cloud Authentication</div>
+                            </div>
+                            <div class="status">✓ Verified</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="qualification-text">
+                    <div class="feature-item">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <div>
+                            <h3>Professional Certifications</h3>
+                            <p>We verify official certifications from major tech vendors like Microsoft, AWS, Google, SAP, and professional bodies like PMI.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        </div>
+                        <div>
+                            <h3>Academic Degrees & Patents</h3>
+                            <p>For specialized roles, we confirm university degrees, patents, and significant publications to ensure deep domain expertise.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                        </div>
+                        <div>
+                            <h3>Business Verification</h3>
+                            <p>For agencies and consulting firms, we check company registration details and VAT numbers for full legal and financial compliance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLLABORATION FLOW SECTION -->
+    <section class="collaboration-flow">
+        <div class="container">
+            <h2>From Chat to Contract, Seamlessly</h2>
+            <p class="section-subtitle">No more scattered emails or insecure file sharing. Our integrated project room keeps all communication, files, and agreements in one secure, auditable place.</p>
+            <div class="collaboration-content">
+                <div class="collaboration-text">
+                     <div class="feature-item">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <div>
+                            <h3>Centralized Communication</h3>
+                            <p>Discuss project details, share feedback, and ask questions in a dedicated, real-time chat.</p>
+                        </div>
+                    </div>
+                     <div class="feature-item">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                        </div>
+                        <div>
+                            <h3>Secure File Sharing</h3>
+                            <p>Exchange sensitive documents, briefs, and deliverables within the encrypted environment of the project room.</p>
+                        </div>
+                    </div>
+                     <div class="feature-item">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        </div>
+                        <div>
+                            <h3>One-Click Contracts</h3>
+                            <p>Instantly convert your discussion into a secure, legally-binding contract with pre-defined milestones and escrow protection.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="collaboration-visual">
+                    <div class="chat-mockup">
+                        <div class="chat-header">Project: Azure Security Audit</div>
+                        <div class="chat-body">
+                            <div class="message client">
+                                <div class="avatar">HM</div>
+                                <div class="bubble">Hi Klaus, thanks for your proposal. Can we define the exact scope for the penetration testing phase?</div>
+                            </div>
+                            <div class="message expert">
+                                <div class="avatar" style="background-color: #2f81f7; color: #f0f6fc;">KR</div>
+                                <div class="bubble">Absolutely, Hans. I've attached a draft Scope of Work document. It outlines the methodology and deliverables. Let me know your thoughts.</div>
+                            </div>
+                            <div class="message attachment">
+                                <span>📄 Scope_of_Work_v1.pdf</span>
+                            </div>
+                             <div class="message client">
+                                <div class="avatar">HM</div>
+                                <div class="bubble">This looks perfect. The budget is approved. Let's formalize this.</div>
+                            </div>
+                             <div class="message system">
+                                <button class="btn btn-primary">Generate Secure Contract</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="features">
         <div class="container">
             <h2>Your Investment is Protected. Your Projects are Compliant.</h2>
@@ -947,7 +1211,7 @@
         </div>
     </section>
 
-    <!-- PRICING SECTION MOVED HERE -->
+    <!-- PRICING SECTION -->
     <section id="pricing" class="pricing">
         <div class="container">
             <h2>Transparent & Flexible Pricing</h2>
@@ -1177,3 +1441,4 @@
 
 </body>
 </html>
+
