@@ -1,394 +1,1121 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Partnex.net | The Operating System for Strategic Commerce</title>
-    <meta name="description" content="Partnex.net is the ecosystem where verified resilience becomes your ultimate commercial advantage.">
-    <meta name="keywords" content="Partnex, strategic commerce, supply chain, resilience, sovereignty stack, CSRD, CSDDD, ESG, B2B, verification, due diligence">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>PartneX | B2B Projects Built on Trust</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        /* --- Global Styles & Variables --- */
+        :root {
+            --bg-dark: #0D1117;
+            --bg-light: #161B22;
+            --border-color: #30363D;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --text-headings: #f0f6fc;
+            --accent-blue: #2F81F7;
+            --accent-blue-hover: #58a6ff;
+            --accent-blue-transparent: rgba(47, 129, 247, 0.2);
+            --success-green: #3fb950;
+            --danger-red: #f85149;
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0A0F1F;
-            color: #E0E0E0;
-            overflow-x: hidden;
+            color: var(--text-primary);
+            background-color: var(--bg-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        .font-headline {
-            font-family: 'Manrope', sans-serif;
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .gradient-text {
-            background: linear-gradient(90deg, #FBBF24, #F59E0B);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        section {
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border-color);
         }
-        .cta-button {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1), inset 0 -2px 0 rgba(0,0,0,0.2);
+        
+        section:last-of-type {
+            border-bottom: none;
         }
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(251, 191, 36, 0.15), inset 0 -1px 0 rgba(0,0,0,0.1);
+
+        h1, h2, h3 {
+            color: var(--text-headings);
+            font-weight: 700;
+            line-height: 1.2;
         }
-        .ui-mockup {
-            background: #1E293B;
-            border: 1px solid #334155;
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            transition: background-color 0.3s ease, border-color 0.3s ease;
+
+        h1 {
+            font-size: 52px;
+            letter-spacing: -1.5px;
         }
-        .ui-mockup-inner {
-            background-color: #0F172A;
-            border: 1px solid #1E293B;
+
+        h2 {
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 20px;
         }
-        .modal {
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 60px auto;
         }
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000), transform 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+
+        p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
         }
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            border: 1px solid transparent;
         }
-        /* Styles for the new demo section */
-        #demo-visuals > .demo-pane {
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
+
+        .btn-primary {
+            background-color: var(--accent-blue);
+            color: var(--text-headings);
+            border-color: var(--accent-blue);
         }
-        #demo-visuals > .demo-pane.active {
-            display: block;
+
+        .btn-primary:hover {
+            background-color: var(--accent-blue-hover);
+            border-color: var(--accent-blue-hover);
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.98); }
-            to { opacity: 1; transform: scale(1); }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-blue);
+            border-color: var(--border-color);
         }
-        .demo-step {
-            transition: opacity 0.3s ease;
-            opacity: 0.4;
+
+        .btn-secondary:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue-hover);
         }
-        .demo-step.is-active {
-            opacity: 1;
+
+        /* --- Block Styles --- */
+
+        /* Block 1: Hero Section */
+        .hero {
+            padding-top: 60px;
+            padding-bottom: 100px;
+        }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        .hero-text {
+            flex: 1.2;
+        }
+        .hero-text .label {
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .hero-text h1 {
+            margin-bottom: 20px;
+        }
+        .hero-text p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        .hero-cta-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+        }
+        .hero-visual canvas {
+            max-width: 400px;
+            max-height: 400px;
+            width: 100%;
+            height: auto;
+        }
+        .social-proof {
+            margin-top: 60px;
+        }
+        .social-proof p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+        .logos {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            filter: brightness(0) invert(1);
+            opacity: 0.6;
+        }
+        .logos img {
+            height: 25px;
+        }
+
+        /* Block 2: Problem & Solution */
+        .problem-solution {
+            background-color: var(--bg-light);
+        }
+        .problem-solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .problem-card {
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 12px;
+        }
+        .problem-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        .problem-card .header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .problem-card .header .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .problem-card.old-way .header .icon {
+             background-color: rgba(248, 81, 73, 0.1);
+             color: var(--danger-red);
+        }
+        .problem-card.new-way .header .icon {
+             background-color: rgba(63, 185, 80, 0.1);
+             color: var(--success-green);
+        }
+        .problem-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .problem-card ul li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        .problem-card ul li svg {
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+        .problem-card.new-way ul li {
+            color: var(--text-primary);
+        }
+
+        /* Block 3: AI Matching (NEW ORDER & STYLE) */
+        .ai-matching {
+            background-color: var(--bg-dark);
+        }
+        .ai-matching-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 40px;
+            margin-top: 60px;
+        }
+        .matching-step {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            height: 100%;
+        }
+        .matching-step h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .request-card textarea {
+            width: 100%;
+            height: 150px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            resize: none;
+        }
+        .request-card .tags {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .request-card .tag {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 5px 12px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .ai-core {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .ai-core svg {
+            width: 100px;
+            height: auto;
+            animation: pulse 2s infinite ease-in-out;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .shortlist-card .expert-profile {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .shortlist-card .expert-profile:last-child {
+            margin-bottom: 0;
+        }
+        .shortlist-card .expert-profile img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .shortlist-card .expert-info .name {
+            font-weight: 600;
+            color: var(--text-headings);
+        }
+        .shortlist-card .expert-info .match-score {
+            font-size: 14px;
+            color: var(--success-green);
+        }
+        
+        /* Block 4: Trust Engine (NEW ORDER & STYLE) */
+        .trust-engine {
+            background-color: var(--bg-light);
+        }
+        .trust-engine-content {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+        .trust-engine-features {
+            flex: 1;
+        }
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .feature-item .icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .feature-item .icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent-blue);
+        }
+        .feature-item h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        .feature-item p {
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+        .trust-engine-visual {
+            flex: 1.2;
+        }
+        .profile-mockup {
+            background: var(--bg-dark);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .profile-header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+        }
+        .profile-header .name {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-headings);
+        }
+        .profile-header .title {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .metric-card {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .metric-card .label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+        .metric-card .value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-headings);
+        }
+        .metric-card .value.green { color: var(--success-green); }
+        .metric-card .value.red { color: var(--danger-red); }
+        
+        /* Block 5: Features */
+        .features {
+            background-color: var(--bg-dark);
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        .feature-box {
+            background: var(--bg-light);
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+        .feature-box .icon {
+            font-size: 32px;
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+        }
+        .feature-box h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        .feature-box p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* Block 6: Comparison */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            min-width: 800px;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 20px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .comparison-table th {
+            font-size: 16px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .comparison-table td {
+            font-size: 16px;
+            color: var(--text-primary);
+        }
+        .comparison-table thead th:first-child {
+            text-align: left;
+        }
+        .comparison-table tbody td:first-child {
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-headings);
+        }
+        .comparison-table .partnex-col {
+            background-color: var(--bg-light);
+        }
+        .comparison-table .partnex-col.header {
+            color: var(--text-headings);
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .comparison-table .icon-check {
+            color: var(--success-green);
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .comparison-table .icon-cross {
+            color: var(--danger-red);
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Block 7: CTA and Testimonials */
+        .testimonials {
+            background-color: var(--bg-light);
+        }
+        .main-cta {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        .main-cta h2 {
+            margin-bottom: 20px;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .testimonial-card {
+            background: var(--bg-dark);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .testimonial-card p.quote {
+            font-size: 18px;
+            margin-bottom: 25px;
+            position: relative;
+            color: var(--text-primary);
+        }
+        .testimonial-card p.quote::before {
+            content: '“';
+            position: absolute;
+            left: -15px;
+            top: -25px;
+            font-size: 60px;
+            color: var(--accent-blue);
+            opacity: 0.3;
+            font-weight: 700;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .testimonial-author .author-name {
+            font-weight: 600;
+            color: var(--text-headings);
+        }
+        .testimonial-author .author-title {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Block 8: Dual CTA */
+        .dual-cta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .cta-box {
+            background-color: var(--bg-light);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        .cta-box h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .cta-box p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            min-height: 50px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark);
+            color: var(--text-secondary);
+            padding: 50px 0;
+            text-align: center;
+        }
+        footer p {
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        /* --- Responsiveness --- */
+        @media (max-width: 992px) {
+            h1 { font-size: 44px; }
+            h2 { font-size: 36px; }
+            .hero-content, .trust-engine-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text {
+                order: 2;
+            }
+            .hero-visual {
+                order: 1;
+                margin-bottom: 40px;
+            }
+            .hero-cta-buttons {
+                justify-content: center;
+            }
+            .social-proof p {
+                text-align: center;
+            }
+            .logos {
+                justify-content: center;
+            }
+            .trust-engine-content {
+                gap: 40px;
+            }
+            .trust-engine-features {
+                order: 2;
+            }
+            .trust-engine-visual {
+                order: 1;
+            }
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .ai-matching-grid {
+                grid-template-columns: 1fr;
+            }
+            .ai-core {
+                transform: rotate(90deg);
+                margin: 20px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 0;
+            }
+            h1 { font-size: 36px; }
+            h2 { font-size: 30px; }
+            .problem-solution-grid {
+                grid-template-columns: 1fr;
+            }
+            .dual-cta-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-900/50 backdrop-blur-lg border-b border-slate-700/50">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold font-headline text-white">Partnex<span class="gradient-text">.net</span></a>
-            <button id="request-invite-header" class="cta-button bg-amber-500 text-slate-900 font-bold py-2 px-6 rounded-lg text-sm">
-                Apply to Join
-            </button>
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="label">THE FUTURE OF B2B COLLABORATION</div>
+                    <h1>B2B Projects Built on Trust. Not Guesswork.</h1>
+                    <p>
+                        PartneX is Europe's first B2B platform replacing subjective reviews and hidden fees with <strong>radical transparency and objective data</strong>. Hire vetted European experts proven by numbers and manage projects with total financial security.
+                    </p>
+                    <div class="hero-cta-buttons">
+                        <a href="#dual-cta" class="btn btn-primary">Find a Vetted Partner</a>
+                        <a href="#dual-cta" class="btn btn-secondary">I'm an Expert</a>
+                    </div>
+                    <div class="social-proof">
+                        <p>Trusted by innovation leaders across Europe</p>
+                        <div class="logos">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Siemens-logo.svg/2560px-Siemens-logo.svg.png" alt="Siemens" onerror="this.style.display='none'">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/SAP_2011_logo.svg/2560px-SAP_2011_logo.svg.png" alt="SAP" onerror="this.style.display='none'">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Revolut_logo.svg/2560px-Revolut_logo.svg.png" alt="Revolut" onerror="this.style.display='none'">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/N26_logo.svg/2560px-N26_logo.svg.png" alt="N26" onerror="this.style.display='none'">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Bosch-logo.svg/2560px-Bosch-logo.svg.png" alt="Bosch" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <!-- The new animated chart will be rendered here -->
+                    <canvas id="heroChart"></canvas>
+                </div>
+            </div>
         </div>
     </header>
 
-    <main>
-        <section id="hero" class="pt-32 pb-24 text-center bg-slate-900">
-            <div class="container mx-auto px-6 fade-in-up">
-                <h1 class="text-5xl md:text-7xl font-extrabold font-headline text-white leading-tight">
-                    Your business is <span class="gradient-text">too good</span> to be ignored
-                </h1>
-                <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-slate-300">
-                    The rules of the big league have changed. Major corporations aren't just looking for suppliers; they're seeking resilient partners. We'll prove you're exactly who they need.
-                </p>
-                <button id="request-invite-hero" class="cta-button mt-12 bg-amber-500 text-slate-900 font-bold py-4 px-10 rounded-lg text-lg">
-                    Start & Get Your Free Analysis
-                </button>
-            </div>
-        </section>
-
-        <section id="shift" class="py-24">
-            <div class="container mx-auto px-6 text-center">
-                <div class="fade-in-up">
-                    <h2 class="text-4xl md:text-5xl font-bold font-headline text-white">What's actually happening? A simple explanation.</h2>
-                    <p class="mt-6 max-w-3xl mx-auto text-lg text-slate-400">Imagine your biggest clients now have to take an exam. Part of that exam is reporting on all their partners. That means you. They can no longer just say, "We work with a great company." They need to show documents, certificates, data. Your reliability has become part of their reputation. We'll help you ace that exam.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section id="free-value" class="py-24 bg-slate-900">
-            <div class="container mx-auto px-6 fade-in-up">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold font-headline text-white">What happens <span class="gradient-text">the moment you apply?</span></h2>
-                    <p class="mt-6 max-w-3xl mx-auto text-lg text-slate-400">No long waits. No generic pitches. You get immediate, tangible value. For free.</p>
-                </div>
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="ui-mockup">
-                        <p class="font-bold text-white mb-4">Your Personal Readiness Report</p>
-                        <div class="ui-mockup-inner p-4 rounded-lg">
-                            <h4 class="font-semibold text-white">Analysis for: Stark Industries</h4>
-                            <p class="text-sm text-slate-400 mt-1">Sector: Advanced Manufacturing</p>
-                            <div class="mt-4 pt-4 border-t border-slate-700">
-                                <h5 class="font-semibold text-amber-400">Key Opportunities:</h5>
-                                <ul class="mt-2 space-y-2 text-sm text-slate-300">
-                                    <li class="flex"><span class="text-green-400 mr-2">▲</span>High demand in Defense & Aerospace sector.</li>
-                                    <li class="flex"><span class="text-green-400 mr-2">▲</span>Potential for contracts in Energy Sovereignty.</li>
-                                </ul>
-                            </div>
-                             <div class="mt-4 pt-4 border-t border-slate-700">
-                                <h5 class="font-semibold text-yellow-400">Growth Areas:</h5>
-                                <ul class="mt-2 space-y-2 text-sm text-slate-300">
-                                    <li class="flex"><span class="text-red-400 mr-2">!</span>ISO 27001 verification needed to access defense contracts.</li>
-                                    <li class="flex"><span class="text-red-400 mr-2">!</span>Requires automated ESG data collection for CSRD reporting.</li>
-                                </ul>
-                            </div>
-                        </div>
-                         <button class="mt-4 w-full bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold py-3 px-4 rounded-md transition-colors">Download Full Report (PDF)</button>
+    <section class="problem-solution">
+        <div class="container">
+            <h2>Stop Playing B2B Roulette.</h2>
+            <p class="section-subtitle">The freelance market forces you into a false choice between two bad options. We built the third, data-driven alternative.</p>
+            <div class="problem-solution-grid">
+                <div class="problem-card old-way">
+                    <div class="header">
+                        <div class="icon">📉</div>
+                        <h3>The Old Way: The Red Ocean</h3>
                     </div>
-                    <div>
-                        <h3 class="text-3xl font-bold text-white mt-2">1. You apply.</h3>
-                        <p class="mt-2 text-slate-400">It takes 2 minutes. No commitments.</p>
-                        <h3 class="text-3xl font-bold text-white mt-6">2. You get a link to a questionnaire.</h3>
-                        <p class="mt-2 text-slate-400">5-7 simple questions about your business, sector, and current certifications.</p>
-                        <h3 class="text-3xl font-bold text-white mt-6">3. We instantly generate your <span class="gradient-text">Personal Readiness Report.</span></h3>
-                        <p class="mt-2 text-slate-400">This isn't a sales brochure. It's a valuable strategic document that shows you:</p>
-                        <ul class="mt-4 space-y-2 text-slate-300">
-                            <li class="flex items-center"><span class="w-2 h-2 rounded-full bg-amber-400 mr-3"></span>Your hidden strengths in the new economy.</li>
-                            <li class="flex items-center"><span class="w-2 h-2 rounded-full bg-amber-400 mr-3"></span>The specific steps that will unlock the most lucrative contracts.</li>
-                            <li class="flex items-center"><span class="w-2 h-2 rounded-full bg-amber-400 mr-3"></span>Exactly how Partnex.net will help you at every stage.</li>
-                        </ul>
-                        <p class="mt-4 font-semibold text-white">This is how we prove our expertise and build trust—by giving you real value from the very first minute.</p>
+                    <ul>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 6L6 18" stroke="#f85149" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 6L18 18" stroke="#f85149" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            "Cheap & Risky" (Upwork) vs. "Expensive & Opaque" (Toptal).
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 6L6 18" stroke="#f85149" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 6L18 18" stroke="#f85149" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            Subjective 5-star ratings and fake reviews.
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 6L6 18" stroke="#f85149" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 6L18 18" stroke="#f85149" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            Hidden fees and markups up to 100%.
+                        </li>
+                         <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 6L6 18" stroke="#f85149" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 6L18 18" stroke="#f85149" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            No guarantee of on-time, on-budget delivery.
+                        </li>
+                    </ul>
+                </div>
+                <div class="problem-card new-way">
+                    <div class="header">
+                        <div class="icon">🚀</div>
+                        <h3>The New Standard: PartneX</h3>
                     </div>
+                    <ul>
+                        <li>
+                           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17L4 12" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            Pay a fair price for measurable results.
+                        </li>
+                        <li>
+                           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17L4 12" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            Objective, data-driven Trust Engine™ metrics.
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17L4 12" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            Radically transparent commission. No hidden fees. Ever.
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17L4 12" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            Ironclad Escrow ensures you only pay for approved work.
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="demo" class="py-24 bg-slate-900">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16 fade-in-up">
-                    <h2 class="text-4xl md:text-5xl font-bold font-headline text-white">How we turn your potential into <span class="gradient-text">contracts</span></h2>
-                    <p class="mt-6 max-w-3xl mx-auto text-lg text-slate-400">Our platform is an end-to-end system for strategic commerce. We guide you through every stage, transforming your operational data into your most powerful asset.</p>
+    <!-- AI MATCHING SECTION (NOW FIRST) -->
+    <section class="ai-matching">
+        <div class="container">
+            <h2>From Request to Result with AI Matching</h2>
+            <p class="section-subtitle">Stop scrolling through hundreds of profiles. Our AI analyzes your project needs and instantly matches you with a shortlist of objectively best-suited, available experts.</p>
+            <div class="ai-matching-grid">
+                <div class="matching-step request-card">
+                    <h3>1. Describe Your Project</h3>
+                    <textarea placeholder="e.g., We need a certified expert for a security audit of our Azure cloud setup for GDPR compliance. The project involves penetration testing and a final report...">I need a security audit of our Azure cloud setup for GDPR compliance.</textarea>
+                    <div class="tags">
+                        <span class="tag">Azure</span>
+                        <span class="tag">Security Audit</span>
+                        <span class="tag">GDPR</span>
+                        <span class="tag">Penetration Testing</span>
+                    </div>
                 </div>
-
-                <div id="demo-wrapper" class="grid lg:grid-cols-2 lg:gap-16">
-                    <div id="demo-steps" class="lg:pt-8">
-                        <div data-step="1" class="demo-step mb-24">
-                            <span class="font-bold gradient-text">STEP 1</span>
-                            <h3 class="text-3xl font-bold text-white mt-2">Onboard & Digitize</h3>
-                            <p class="mt-4 text-slate-400">We start by creating your company's digital twin. You connect data sources and upload documents. Our system intelligently structures this information, forming the foundation of your Resilience Profile.</p>
-                        </div>
-                        <div data-step="2" class="demo-step mb-24">
-                            <span class="font-bold gradient-text">STEP 2</span>
-                            <h3 class="text-3xl font-bold text-white mt-2">Verify & Enhance</h3>
-                            <p class="mt-4 text-slate-400">This is where data becomes trust. We automate the verification of your credentials (KYB, ISO, ESG reports) against trusted registries, creating a tamper-proof "Resilience Passport" that primes you for due diligence.</p>
-                        </div>
-                         <div data-step="3" class="demo-step mb-24">
-                            <span class="font-bold gradient-text">STEP 3</span>
-                            <h3 class="text-3xl font-bold text-white mt-2">Discover & Match</h3>
-                            <p class="mt-4 text-slate-400">Our AI Curator continuously scans the market for buyers whose requirements are a perfect match for your verified profile. No more cold calls—we bring pre-qualified, high-value opportunities directly to you.</p>
-                        </div>
-                        <div data-step="4" class="demo-step">
-                            <span class="font-bold gradient-text">STEP 4</span>
-                            <h3 class="text-3xl font-bold text-white mt-2">Transact & Scale</h3>
-                            <p class="mt-4 text-slate-400">From secure communication and smart contracts to escrow payments and integrated logistics, the entire deal lifecycle is managed within Partnex. It’s a transparent, efficient, and secure command center for your growth.</p>
+                <div class="ai-core">
+                    <svg width="102" height="98" viewBox="0 0 102 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M51 97C78.6142 97 101 75.2828 101 48.5C101 21.7172 78.6142 0 51 0C23.3858 0 1 21.7172 1 48.5C1 75.2828 23.3858 97 51 97Z" stroke="url(#paint0_linear_101_2)" stroke-width="2"/>
+                        <path d="M51 81C68.6731 81 83 66.4934 83 48.5C83 30.5066 68.6731 16 51 16C33.3269 16 19 30.5066 19 48.5C19 66.4934 33.3269 81 51 81Z" stroke="#30363D" stroke-width="2"/>
+                        <path d="M51 65C59.8234 65 67 57.7025 67 48.5C67 39.2975 59.8234 32 51 32C42.1766 32 35 39.2975 35 48.5C35 57.7025 42.1766 65 51 65Z" stroke="#2F81F7" stroke-width="2"/>
+                        <defs>
+                        <linearGradient id="paint0_linear_101_2" x1="51" y1="0" x2="51" y2="97" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#58A6FF"/>
+                        <stop offset="1" stop-color="#2F81F7" stop-opacity="0"/>
+                        </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="matching-step shortlist-card">
+                    <h3>2. Get Your Vetted Shortlist</h3>
+                    <div class="expert-profile">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Klaus Richter" onerror="this.src='https://placehold.co/50x50/161B22/8b949e?text=KR'">
+                        <div class="expert-info">
+                            <div class="name">Klaus Richter</div>
+                            <div class="match-score">✓ 98% Match Score</div>
                         </div>
                     </div>
-
-                    <div class="hidden lg:block lg:sticky top-24 h-max">
-                        <div id="demo-visuals" class="ui-mockup">
-                            <div id="pane-1" class="demo-pane">
-                                <div class="flex justify-between items-center mb-4">
-                                    <p class="font-bold text-white">Data Onboarding</p>
-                                    <span class="text-xs font-mono bg-slate-700 text-slate-300 px-2 py-1 rounded">PROFILE: 25%</span>
-                                </div>
-                                <div class="space-y-3">
-                                    <div class="ui-mockup-inner p-3 rounded-lg"><h4 class="font-semibold text-white text-sm">Corporate Documents</h4><p class="text-xs text-slate-400">Registry Extracts, UBO... <span class="text-green-400 float-right">✔ Synced</span></p></div>
-                                    <div class="ui-mockup-inner p-3 rounded-lg"><h4 class="font-semibold text-white text-sm">Certifications</h4><p class="text-xs text-slate-400">ISO 9001, ISO 27001... <span class="text-yellow-400 float-right">● Pending</span></p></div>
-                                    <div class="ui-mockup-inner p-3 rounded-lg"><h4 class="font-semibold text-white text-sm">Financial Statements</h4><p class="text-xs text-slate-400">Past 3 years... <span class="text-green-400 float-right">✔ Synced</span></p></div>
-                                    <div class="ui-mockup-inner p-3 rounded-lg"><h4 class="font-semibold text-white text-sm">ESG Data Sources</h4><p class="text-xs text-slate-400">Utility bills, HR system... <span class="text-red-400 float-right">✖ Not Connected</span></p></div>
-                                </div>
-                                <button class="mt-4 w-full bg-slate-600 text-white font-bold py-2 px-4 rounded-md">Connect Data Source</button>
-                            </div>
-                            <div id="pane-2" class="demo-pane">
-                                <div class="flex justify-between items-center mb-4">
-                                    <p class="font-bold text-white">Resilience Passport</p>
-                                    <span class="text-xs font-mono bg-green-900/50 text-green-300 px-2 py-1 rounded border border-green-500/50">VERIFIED</span>
-                                </div>
-                                <div class="grid grid-cols-3 gap-3 text-center">
-                                    <div class="ui-mockup-inner p-3 rounded-lg"><h4 class="font-semibold text-white text-sm">KYB/AML</h4><p class="text-2xl mt-1">✅</p><p class="text-xs text-slate-400">Verified</p></div>
-                                    <div class="ui-mockup-inner p-3 rounded-lg"><h4 class="font-semibold text-white text-sm">Security</h4><p class="text-2xl mt-1">✅</p><p class="text-xs text-slate-400">ISO 27001</p></div>
-                                    <div class="ui-mockup-inner p-3 rounded-lg"><h4 class="font-semibold text-white text-sm">ESG</h4><p class="text-2xl mt-1">⚠️</p><p class="text-xs text-slate-400">CSRD Ready</p></div>
-                                </div>
-                                <div class="mt-4 ui-mockup-inner p-3 rounded-lg">
-                                    <h4 class="font-semibold text-white text-sm mb-2">Resilience Score</h4>
-                                    <div class="w-full bg-slate-700 rounded-full h-2.5"><div class="bg-amber-500 h-2.5 rounded-full" style="width: 82%"></div></div>
-                                    <p class="text-xs text-slate-400 mt-1">Your profile is stronger than 82% of peers in your sector.</p>
-                                </div>
-                            </div>
-                            <div id="pane-3" class="demo-pane">
-                                <p class="font-bold text-white mb-4">AI Opportunity Curator</p>
-                                <div class="border-2 border-amber-400 p-4 rounded-lg bg-amber-900/20">
-                                    <h4 class="font-semibold text-white">High-Confidence Match Found</h4>
-                                    <div class="flex items-center mt-2">
-                                        <img src="https://via.placeholder.com/40" alt="Buyer logo" class="rounded-full mr-3">
-                                        <div>
-                                            <p class="text-sm font-bold text-white">European Defense Agency</p>
-                                            <p class="text-xs text-slate-300">Req: Secure Communications Component</p>
-                                        </div>
-                                    </div>
-                                    <div class="mt-3 pt-3 border-t border-amber-500/30">
-                                        <p class="text-xs text-slate-300">Match Score: <span class="font-bold text-lg text-amber-300">98%</span></p>
-                                        <p class="text-xs text-green-400 mt-1">✔ ISO 27001  ✔ EU Origin  ✔ CSRD Compliant</p>
-                                    </div>
-                                </div>
-                                <div class="ui-mockup-inner p-3 rounded-lg mt-3">
-                                    <p class="text-sm text-slate-300">Also matching: <span class="font-semibold text-white">Siemens Energy</span> (85%), <span class="font-semibold text-white">Northvolt</span> (79%)</p>
-                                </div>
-                            </div>
-                            <div id="pane-4" class="demo-pane">
-                               <p class="font-bold text-white mb-4">Deal Dashboard: #EUDA-SI-001</p>
-                               <div class="space-y-3">
-                                    <div class="ui-mockup-inner p-3 rounded-lg">
-                                        <h4 class="font-semibold text-white text-sm">Deal Status: <span class="text-green-400">Escrow Funded</span></h4>
-                                        <div class="w-full bg-slate-700 rounded-full h-2.5 mt-2"><div class="bg-green-500 h-2.5 rounded-full" style="width: 75%"></div></div>
-                                    </div>
-                                    <div class="grid grid-cols-3 gap-2 text-center">
-                                        <div class="ui-mockup-inner p-2 rounded-lg"><p class="text-xs text-slate-400">Contract</p><p class="text-white font-bold">$500k</p></div>
-                                        <div class="ui-mockup-inner p-2 rounded-lg"><p class="text-xs text-slate-400">Insurance</p><p class="text-white font-bold">Active</p></div>
-                                        <div class="ui-mockup-inner p-2 rounded-lg"><p class="text-xs text-slate-400">Logistics</p><p class="text-white font-bold">Pending</p></div>
-                                    </div>
-                                    <div class="ui-mockup-inner p-3 rounded-lg">
-                                        <h4 class="font-semibold text-white text-sm">Secure Chat</h4>
-                                        <p class="text-xs text-slate-400 mt-2 p-2 bg-slate-900 rounded-md">All compliance documents verified by Partnex. You are cleared for shipment.</p>
-                                    </div>
-                               </div>
-                               <button class="mt-4 w-full bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold py-3 px-4 rounded-md transition-colors">Manage Full Transaction</button>
-                            </div>
+                    <div class="expert-profile">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Lena Bauer" onerror="this.src='https://placehold.co/50x50/161B22/8b949e?text=LB'">
+                        <div class="expert-info">
+                            <div class="name">Lena Bauer</div>
+                            <div class="match-score">✓ 95% Match Score</div>
+                        </div>
+                    </div>
+                    <div class="expert-profile">
+                        <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Max Weber" onerror="this.src='https://placehold.co/50x50/161B22/8b949e?text=MW'">
+                        <div class="expert-info">
+                            <div class="name">Max Weber</div>
+                            <div class="match-score">✓ 91% Match Score</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <section id="final-cta" class="py-24 bg-slate-900">
-            <div class="container mx-auto px-6 text-center fade-in-up">
-                <h2 class="text-4xl md:text-5xl font-bold font-headline text-white">Stop being overlooked. <br><span class="gradient-text">It's time to be chosen.</span></h2>
-                <p class="mt-6 max-w-2xl mx-auto text-lg text-slate-300">
-                    You've built an outstanding product. We'll help the world see why it's also the most reliable. Apply, get your free analysis, and take your first step into the major leagues.
-                </p>
-                <button id="request-invite-final" class="cta-button mt-12 bg-amber-500 text-slate-900 font-bold py-4 px-10 rounded-lg text-lg">
-                    Start & Get Your Free Analysis
-                </button>
+        </div>
+    </section>
+    
+    <!-- TRUST ENGINE SECTION (NOW SECOND) -->
+    <section class="trust-engine">
+        <div class="container">
+            <h2 style="margin-bottom: 20px;">Then, Verify with the Trust Engine™</h2>
+            <p class="section-subtitle">Our AI finds the skills, our Trust Engine™ proves the reliability. We replace subjective 'stars' with objective data generated from real project performance.</p>
+            <div class="trust-engine-content">
+                <div class="trust-engine-features">
+                    <div class="feature-item">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14M16.5 14.83V22m-2.5-1.83L16.5 22l2.5-1.83M22 12A10 10 0 1 0 12 22"/></svg>
+                        </div>
+                        <div>
+                            <h3>On-Time Delivery</h3>
+                            <p>The percentage of project milestones delivered on schedule. Pulled directly from our project management system.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+                        </div>
+                        <div>
+                            <h3>On-Budget Completion</h3>
+                            <p>The percentage of projects completed within the original budget. Tracked via the PartneX financial system.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M21 17L7 3"/></svg>
+                        </div>
+                        <div>
+                            <h3>Repeat Business Rate</h3>
+                            <p>The ultimate quality metric: how many clients returned to the same expert for a new project.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trust-engine-visual">
+                    <div class="profile-mockup">
+                        <div class="profile-header">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Avatar" onerror="this.src='https://placehold.co/80x80/161B22/8b949e?text=Klaus'">
+                            <div>
+                                <div class="name">Klaus Richter</div>
+                                <div class="title">Senior Azure Security Consultant</div>
+                            </div>
+                        </div>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="label">On-Time Delivery</div>
+                                <div class="value green">98%</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="label">On-Budget Completion</div>
+                                <div class="value green">100%</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="label">Repeat Business Rate</div>
+                                <div class="value green">72%</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="label">Dispute Rate</div>
+                                <div class="value red">1%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer class="border-t border-slate-700/50">
-        <div class="container mx-auto px-6 py-8 text-center text-slate-400">
-            <p>&copy; 2025 Partnex.net. All rights reserved.</p>
+    <section class="features">
+        <div class="container">
+            <h2>Your Investment is Protected. Your Projects are Compliant.</h2>
+            <p class="section-subtitle">Work with talent across Europe as easily and securely as hiring a contractor from next door.</p>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="icon">🛡️</div>
+                    <h3>Ironclad Escrow</h3>
+                    <p>Funds are held securely and released only when you approve the work. Zero financial risk for you.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="icon">🇪🇺</div>
+                    <h3>European Compliance</h3>
+                    <p>Our payment system is fully PSD2 and GDPR compliant. We handle KYC/AML verification so you don't have to.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="icon">🧾</div>
+                    <h3>Simplified Admin</h3>
+                    <p>One contract, unified invoices, and automated reporting. All your project documentation, all in one place.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparison">
+        <div class="container">
+            <h2>The Choice is Clear. The Transparency is Radical.</h2>
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Mass Marketplaces (Upwork)</th>
+                            <th>Premium Agencies (Toptal)</th>
+                            <th class="partnex-col header">PartneX</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pricing Model</td>
+                            <td>Race to the bottom, floating fees</td>
+                            <td>Hidden markup (up to 100%)</td>
+                            <td class="partnex-col"><span class="icon-check">✓</span> Transparent Commission</td>
+                        </tr>
+                        <tr>
+                            <td>Expert Vetting</td>
+                            <td>Subjective 5-star reviews</td>
+                            <td>Internal, non-transparent</td>
+                            <td class="partnex-col"><span class="icon-check">✓</span> Objective Trust Engine™</td>
+                        </tr>
+                        <tr>
+                            <td>Target Audience</td>
+                            <td>Micro-tasks, small business</td>
+                            <td>Large Enterprise</td>
+                            <td class="partnex-col"><span class="icon-check">✓</span> European SMB/Mittelstand</td>
+                        </tr>
+                        <tr>
+                            <td>Payment Security</td>
+                            <td>Basic Escrow</td>
+                            <td><span class="icon-cross">×</span> Deposit, no Escrow</td>
+                            <td class="partnex-col"><span class="icon-check">✓</span> Compliant European Escrow</td>
+                        </tr>
+                        <tr>
+                            <td>Result Guarantee</td>
+                            <td><span class="icon-cross">×</span> None</td>
+                            <td><span class="icon-cross">×</span> None</td>
+                            <td class="partnex-col"><span class="icon-check">✓</span> Payment tied to KPIs</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="main-cta">
+                <h2>Ready to build great things on a foundation of trust?</h2>
+                <p class="section-subtitle">Join the platform that's changing the rules of B2B collaboration in Europe.</p>
+                <a href="#dual-cta" class="btn btn-primary">Post a Project for Free</a>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="quote">"With PartneX, we hired a team for a complex fintech project with 100% confidence before we even started. The Trust Engine™ is a revolution. We saw their real performance history, not just a portfolio."</p>
+                    <div class="testimonial-author">
+                        <div>
+                            <div class="author-name">— Hans Müller, CEO</div>
+                            <div class="author-title">Mittelstand Manufacturing GmbH, Munich</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">"We used to spend weeks searching for agencies on Clutch, then another month on contract negotiations. PartneX combined it all into one seamless flow. We found, hired, and launched our project in 72 hours."</p>
+                    <div class="testimonial-author">
+                        <div>
+                            <div class="author-name">— Sophie Dubois, Head of Digital</div>
+                            <div class="author-title">Tech Scale-up, Paris</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dual-cta" class="dual-cta">
+        <div class="container">
+            <div class="dual-cta-grid">
+                <div class="cta-box">
+                    <h3>For Companies</h3>
+                    <p>Find a partner who delivers results. Get access to an elite pool of European professionals whose reputation is backed by objective data.</p>
+                    <a href="#" class="btn btn-primary">Start a Project</a>
+                </div>
+                <div class="cta-box">
+                    <h3>For Experts</h3>
+                    <p>Find clients who value quality. Work on exciting projects for leading European companies at a fair, transparent rate.</p>
+                    <a href="#" class="btn btn-secondary">Become a Partner</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 PartneX. All rights reserved. Built to change the B2B game.</p>
         </div>
     </footer>
 
-    <div id="modal" class="modal invisible opacity-0 fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
-        <div id="modal-content" class="bg-slate-800 p-8 rounded-2xl shadow-2xl w-full max-w-md m-4 transform scale-95 transition-transform duration-300">
-            <div class="flex justify-between items-center">
-                <h3 class="text-2xl font-bold text-white">Apply to Join</h3>
-                <button id="close-modal" class="text-slate-400 hover:text-white text-3xl">&times;</button>
-            </div>
-            <p class="mt-2 text-slate-400">Leave your details to receive the questionnaire link for your free Readiness Report.</p>
-            <form id="invite-form" class="mt-6 space-y-4">
-                <div><label for="name" class="block text-sm font-medium text-slate-300">Your Name</label><input type="text" id="name" name="name" required class="mt-1 block w-full bg-slate-700 border border-slate-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-amber-500 focus:border-amber-500"></div>
-                <div><label for="email" class="block text-sm font-medium text-slate-300">Email</label><input type="email" id="email" name="email" required class="mt-1 block w-full bg-slate-700 border border-slate-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-amber-500 focus:border-amber-500"></div>
-                <div><label for="company" class="block text-sm font-medium text-slate-300">Company Name</label><input type="text" id="company" name="company" required class="mt-1 block w-full bg-slate-700 border border-slate-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-amber-500 focus:border-amber-500"></div>
-                <div class="pt-4"><button type="submit" class="w-full cta-button bg-amber-500 text-slate-900 font-bold py-3 px-4 rounded-lg">Get My Free Analysis</button></div>
-            </form>
-        </div>
-    </div>
-
     <script>
+        // This script runs after the document is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            // Modal logic (remains the same)
-            const modal = document.getElementById('modal');
-            const modalContent = document.getElementById('modal-content');
-            const closeModalBtn = document.getElementById('close-modal');
-            const openModalBtns = [
-                document.getElementById('request-invite-header'),
-                document.getElementById('request-invite-hero'),
-                document.getElementById('request-invite-final')
-            ];
+            const ctx = document.getElementById('heroChart');
 
-            const openModal = () => {
-                modal.classList.remove('invisible', 'opacity-0');
-                modalContent.classList.remove('scale-95');
-                modalContent.classList.add('scale-100');
-            };
-
-            const closeModal = () => {
-                modalContent.classList.add('scale-95');
-                modalContent.classList.remove('scale-100');
-                modal.classList.add('invisible', 'opacity-0');
-            };
-
-            openModalBtns.forEach(btn => btn.addEventListener('click', openModal));
-            closeModalBtn.addEventListener('click', closeModal);
-            modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
-            document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeModal(); });
-            
-            const inviteForm = document.getElementById('invite-form');
-            inviteForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const name = document.getElementById('name').value;
-                alert(`Thank you, ${name}! The questionnaire link for your Personal Readiness Report has been sent to your email.`);
-                inviteForm.reset();
-                closeModal();
-            });
-
-            // Fade-in on scroll animation (remains the same)
-            const animatedElements = document.querySelectorAll('.fade-in-up');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            animatedElements.forEach(el => observer.observe(el));
-
-            // === NEW SCROLLYTELLING LOGIC ===
-            const demoSteps = document.querySelectorAll('.demo-step');
-            const demoPanes = document.querySelectorAll('.demo-pane');
-
-            // Set the first step as active by default
-            if (demoSteps.length > 0) {
-                demoSteps[0].classList.add('is-active');
-                demoPanes[0].classList.add('active');
+            // Check if the canvas element exists
+            if (!ctx) {
+                console.error("Canvas element with id 'heroChart' not found.");
+                return;
             }
 
-            const scrollyObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const step = entry.target.dataset.step;
+            // Data for the radar chart
+            const data = {
+                labels: [
+                    'Trust',
+                    'Efficiency',
+                    'Transparency',
+                    'Quality',
+                    'Speed'
+                ],
+                datasets: [{
+                    label: 'Traditional Platforms',
+                    data: [65, 59, 30, 61, 72], // Lower scores
+                    fill: true,
+                    backgroundColor: 'rgba(139, 148, 158, 0.2)',
+                    borderColor: 'rgb(139, 148, 158)',
+                    pointBackgroundColor: 'rgb(139, 148, 158)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(139, 148, 158)'
+                }, {
+                    label: 'PartneX',
+                    data: [95, 90, 100, 92, 85], // Higher scores
+                    fill: true,
+                    backgroundColor: 'rgba(47, 129, 247, 0.2)', // var(--accent-blue-transparent)
+                    borderColor: 'rgb(47, 129, 247)', // var(--accent-blue)
+                    pointBackgroundColor: 'rgb(47, 129, 247)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(47, 129, 247)'
+                }]
+            };
 
-                        // Highlight the active text step
-                        demoSteps.forEach(s => s.classList.remove('is-active'));
-                        entry.target.classList.add('is-active');
-
-                        // Show the corresponding visual pane
-                        demoPanes.forEach(pane => {
-                            pane.classList.remove('active');
-                            if (pane.id === `pane-${step}`) {
-                                pane.classList.add('active');
+            // Configuration for the radar chart
+            const config = {
+                type: 'radar',
+                data: data,
+                options: {
+                    maintainAspectRatio: true,
+                    aspectRatio: 1,
+                    elements: {
+                        line: {
+                            borderWidth: 2
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(201, 209, 217, 0.2)' // var(--text-primary) with opacity
+                            },
+                            grid: {
+                                color: 'rgba(201, 209, 217, 0.2)'
+                            },
+                            pointLabels: {
+                                color: '#c9d1d9', // var(--text-primary)
+                                font: {
+                                    size: 14,
+                                    family: 'Inter, sans-serif'
+                                }
+                            },
+                            ticks: {
+                                color: '#0D1117', // var(--bg-dark)
+                                backdropColor: '#161B22', // var(--bg-light)
+                                stepSize: 25
+                            },
+                            min: 0,
+                            max: 100
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#c9d1d9', // var(--text-primary)
+                                font: {
+                                    size: 14,
+                                    family: 'Inter, sans-serif'
+                                }
                             }
-                        });
+                        }
+                    },
+                    animation: {
+                        duration: 1500, // Animation duration in milliseconds
+                        easing: 'easeInOutCubic' // Easing function for a smooth effect
                     }
-                });
-            }, { 
-                rootMargin: '-40% 0px -40% 0px', // Trigger when step is in the middle 40% of the viewport
-                threshold: 0 
-            });
-
-            demoSteps.forEach(step => {
-                scrollyObserver.observe(step);
-            });
+                }
+            };
+            
+            // Create the chart
+            new Chart(ctx, config);
         });
     </script>
+
 </body>
 </html>
+
