@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,6 +22,7 @@
             --accent-blue-hover: #58a6ff;
             --accent-blue-transparent: rgba(47, 129, 247, 0.2);
             --success-green: #3fb950;
+            --warning-yellow: #e3b341;
             --danger-red: #f85149;
             --shadow-md: 0 8px 24px rgba(0,0,0,0.2);
         }
@@ -252,7 +252,7 @@
             color: var(--text-primary);
         }
 
-        /* Block 3: AI Matching (NEW ORDER & STYLE) */
+        /* Block 3: AI Matching */
         .ai-matching {
             background-color: var(--bg-dark);
         }
@@ -344,7 +344,7 @@
             color: var(--success-green);
         }
         
-        /* Block 4: Trust Engine (NEW ORDER & STYLE) */
+        /* Block 4: Trust Engine */
         .trust-engine {
             background-color: var(--bg-light);
         }
@@ -522,10 +522,74 @@
             font-size: 24px;
             font-weight: bold;
         }
+        
+        /* NEW BLOCK: Blue Ocean Strategy */
+        .blue-ocean {
+            background-color: var(--bg-light);
+        }
+        .blue-ocean-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .strategy-card {
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+        }
+        .strategy-card .header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .strategy-card .icon {
+            font-size: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .strategy-card h3 {
+            font-size: 22px;
+        }
+        .strategy-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .strategy-card ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+        .strategy-card ul li::before {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-weight: bold;
+        }
+        /* Eliminate */
+        .strategy-card.eliminate .icon { background-color: rgba(248, 81, 73, 0.1); color: var(--danger-red); }
+        .strategy-card.eliminate ul li::before { content: '−'; color: var(--danger-red); }
+        /* Reduce */
+        .strategy-card.reduce .icon { background-color: rgba(227, 179, 65, 0.1); color: var(--warning-yellow); }
+        .strategy-card.reduce ul li::before { content: '↓'; color: var(--warning-yellow); }
+        /* Raise */
+        .strategy-card.raise .icon { background-color: rgba(63, 185, 80, 0.1); color: var(--success-green); }
+        .strategy-card.raise ul li::before { content: '↑'; color: var(--success-green); }
+        /* Create */
+        .strategy-card.create .icon { background-color: rgba(47, 129, 247, 0.1); color: var(--accent-blue); }
+        .strategy-card.create ul li::before { content: '+'; color: var(--accent-blue); }
+
 
         /* Block 7: CTA and Testimonials */
         .testimonials {
-            background-color: var(--bg-light);
+            background-color: var(--bg-dark);
         }
         .main-cta {
             text-align: center;
@@ -540,7 +604,7 @@
             gap: 40px;
         }
         .testimonial-card {
-            background: var(--bg-dark);
+            background: var(--bg-light);
             padding: 30px;
             border-radius: 12px;
             border: 1px solid var(--border-color);
@@ -667,6 +731,9 @@
             .dual-cta-grid {
                 grid-template-columns: 1fr;
             }
+            .blue-ocean-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -712,7 +779,7 @@
                 <div class="problem-card old-way">
                     <div class="header">
                         <div class="icon">📉</div>
-                        <h3>The Old Way: The Red Ocean</h3>
+                        <h3>The Old Way: -//-</h3>
                     </div>
                     <ul>
                         <li>
@@ -761,7 +828,7 @@
         </div>
     </section>
 
-    <!-- AI MATCHING SECTION (NOW FIRST) -->
+    <!-- AI MATCHING SECTION -->
     <section class="ai-matching">
         <div class="container">
             <h2>From Request to Result with AI Matching</h2>
@@ -818,7 +885,7 @@
         </div>
     </section>
     
-    <!-- TRUST ENGINE SECTION (NOW SECOND) -->
+    <!-- TRUST ENGINE SECTION -->
     <section class="trust-engine">
         <div class="container">
             <h2 style="margin-bottom: 20px;">Then, Verify with the Trust Engine™</h2>
@@ -956,6 +1023,63 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </section>
+    
+    <!-- NEW BLUE OCEAN STRATEGY SECTION -->
+    <section class="blue-ocean">
+        <div class="container">
+            <h2> Redefining B2B Collaboration</h2>
+            <p class="section-subtitle">We didn't just improve the old model. We created a new one by challenging the industry's core assumptions.</p>
+            <div class="blue-ocean-grid">
+                <div class="strategy-card eliminate">
+                    <div class="header">
+                        <div class="icon">⛔</div>
+                        <h3>Eliminate</h3>
+                    </div>
+                    <ul>
+                        <li>Hidden fees & opaque markups</li>
+                        <li>Price wars & quality dumping</li>
+                        <li>The "illusion of choice" from millions of profiles</li>
+                        <li>Complex enterprise bureaucracy</li>
+                    </ul>
+                </div>
+                <div class="strategy-card reduce">
+                    <div class="header">
+                        <div class="icon">📉</div>
+                        <h3>Reduce</h3>
+                    </div>
+                    <ul>
+                        <li>Subjectivity in ratings and reviews</li>
+                        <li>Dependence on low-value "gigs"</li>
+                        <li>The platform's role as a passive middleman</li>
+                    </ul>
+                </div>
+                <div class="strategy-card raise">
+                    <div class="header">
+                        <div class="icon">📈</div>
+                        <h3>Raise</h3>
+                    </div>
+                    <ul>
+                        <li>Radical transparency in pricing and process</li>
+                        <li>Bank-grade security & European compliance</li>
+                        <li>Focus on the European Mittelstand (SMB)</li>
+                        <li>Speed and quality of AI-driven matching</li>
+                    </ul>
+                </div>
+                <div class="strategy-card create">
+                    <div class="header">
+                        <div class="icon">✨</div>
+                        <h3>Create</h3>
+                    </div>
+                    <ul>
+                        <li>The data-driven Trust Engine™</li>
+                        <li>End-to-end project lifecycle management</li>
+                        <li>True, KPI-based result guarantees</li>
+                        <li>A community built on pragmatism and quality</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -1118,4 +1242,3 @@
 
 </body>
 </html>
-
