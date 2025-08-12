@@ -472,7 +472,46 @@
             margin-bottom: 0;
         }
 
-        /* Block 6: Comparison */
+        /* Block 6: Pricing Section */
+        .pricing {
+            background-color: var(--bg-dark);
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 60px;
+        }
+        .pricing-card {
+            background-color: var(--bg-light);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+        .pricing-card .icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .pricing-card p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            flex-grow: 1;
+            margin-bottom: 30px;
+        }
+        .pricing-card .label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+        }
+
+        /* Block 7: Comparison */
         .comparison-table-wrapper {
             overflow-x: auto;
         }
@@ -522,7 +561,7 @@
             font-weight: bold;
         }
 
-        /* Block 7: CTA and Testimonials */
+        /* Block 8: CTA and Testimonials */
         .testimonials {
             background-color: var(--bg-light);
         }
@@ -573,8 +612,8 @@
             font-size: 14px;
             color: var(--text-secondary);
         }
-
-        /* Block 8: Dual CTA */
+        
+        /* Block 9: Dual CTA */
         .dual-cta-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -660,10 +699,9 @@
             }
             h1 { font-size: 36px; }
             h2 { font-size: 30px; }
-            .problem-solution-grid {
-                grid-template-columns: 1fr;
-            }
-            .dual-cta-grid {
+            .problem-solution-grid,
+            .dual-cta-grid,
+            .pricing-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -760,7 +798,7 @@
         </div>
     </section>
 
-    <!-- AI MATCHING SECTION (NOW FIRST) -->
+    <!-- AI MATCHING SECTION -->
     <section class="ai-matching">
         <div class="container">
             <h2>From Request to Result with AI Matching</h2>
@@ -817,7 +855,7 @@
         </div>
     </section>
     
-    <!-- TRUST ENGINE SECTION (NOW SECOND) -->
+    <!-- TRUST ENGINE SECTION -->
     <section class="trust-engine">
         <div class="container">
             <h2 style="margin-bottom: 20px;">Then, Verify with the Trust Engine™</h2>
@@ -904,6 +942,28 @@
                     <div class="icon">🧾</div>
                     <h3>Simplified Admin</h3>
                     <p>One contract, unified invoices, and automated reporting. All your project documentation, all in one place.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION MOVED HERE -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2>Transparent & Flexible Pricing</h2>
+            <p class="section-subtitle">Choose the model that fits your needs. No hidden fees, no opaque markups. Ever.</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="icon">🤝</div>
+                    <h3>Transparent Commission</h3>
+                    <p>The simplest and most honest model. The platform charges a fixed percentage (e.g., 10-15%) on each successful transaction through the escrow system. The commission amount is openly displayed to both the client and the expert. This directly contrasts with models like Upwork (where the freelancer's commission is variable) and Toptal (where it's hidden).</p>
+                    <div class="label">Best for single projects</div>
+                </div>
+                <div class="pricing-card">
+                    <div class="icon">🚀</div>
+                    <h3>Client Subscription (SaaS)</h3>
+                    <p>Clients pay a monthly or annual subscription for access to the platform and its tools. Different subscription tiers can be available (e.g., Basic for search, Pro with collaboration tools, Enterprise with a personal manager and advanced analytics). Transaction fees may be reduced or waived. This model is well-suited for companies that regularly engage external specialists.</p>
+                    <div class="label">Best for ongoing needs</div>
                 </div>
             </div>
         </div>
